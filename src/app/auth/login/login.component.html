@@ -5,7 +5,12 @@
         <form class="form" id="login" autocomplete="disabled" #userForm="ngForm" (submit)="submit()">
             <input type="email" #email="ngModel" [ngClass]="{'showError':email.touched && email.invalid}" name="username" [(ngModel)]="user.username" id="email" placeholder="Username" required>
             <input type="password" name="password" [(ngModel)]="user.password" id="password" placeholder="Password" required>
-            <button type="submit" id="login-button" [ngStyle]=" {'background-color': userForm.valid ?'blue':'red'}" [disabled]="!userForm.valid" class="loginbutton">Login</button>
+            <ng-container *ngFor="let item of user.test; index as i;">
+                <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="user.test[i].item">
+            </ng-container>
+            <button (click)="addItem()">add Item</button>
+            <button type="submit" id="login-button" [ngStyle]=" {'background-color': userForm.valid ?'blue':'red'}" [disabled]="!userForm.valid" 
+            class="loginbutton">Login</button>
             <button type="button" id="login-button" routerLink="/signup" class="loginbutton">Sign Up</button><br>
         
            
