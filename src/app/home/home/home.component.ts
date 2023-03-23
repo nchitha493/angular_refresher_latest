@@ -10,6 +10,7 @@ import * as am4core from "@amcharts/amcharts4/core";
 })
 export class HomeComponent implements OnInit {
   users:any = localStorage.getItem("user");
+  
   chartType: any = 'XYChart';
   public chart: any;
   categoryAxis : am4charts.CategoryAxis;
@@ -20,7 +21,7 @@ export class HomeComponent implements OnInit {
   @ViewChild('charRef') charRef:any;
   constructor(private userService: UserService,private router:Router,private zone: NgZone) {
     this.users = JSON.parse(this.users);
-   
+    console.log("Hnome Components")
     this.categoryAxis = new am4charts.CategoryAxis();
     this.categoryAxis.dataFields.category = "country";
     this.valueAxis = new am4charts.ValueAxis();

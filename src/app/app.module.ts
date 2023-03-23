@@ -8,11 +8,13 @@ import { RouterModule } from '@angular/router';
 import { UserService } from './service/service.service';
 import { AuthGuard } from './guard/auth.gaurd';
 import { JwtInterceptor } from './jwtinterceptor';
+import { HeaderComponent } from './home/header/header.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
