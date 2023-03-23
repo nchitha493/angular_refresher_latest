@@ -1,5 +1,8 @@
 import { Component,OnInit  } from '@angular/core';
 import { FormGroup, FormControl, Validators, ValidatorFn, AbstractControl,FormArray  } from '@angular/forms';
+import { Router } from '@angular/router';
+
+import { UserService } from 'src/app/service/service.service';
 import { passwordLengthValidator, passwordMatchValidator } from 'src/app/validator';
 @Component({
   selector: 'app-signup',
@@ -9,7 +12,7 @@ import { passwordLengthValidator, passwordMatchValidator } from 'src/app/validat
 
 export class SignupComponent implements OnInit {
   myForm!: FormGroup;
-
+constructor(private userService:UserService,private router:Router){}
   ngOnInit() {
     this.myForm = new FormGroup({
       name: new FormControl('', Validators.required),
@@ -40,7 +43,13 @@ export class SignupComponent implements OnInit {
     this.test.removeAt(index);
   }
   signUp(){
-
+    console.log("User Registeration")
+    this.userService.register(this.myForm.value).subscribe((data:any)=>{
+      console.log(data);
+      localStorage.setItem('token',data.token);
+      localStorage.setItem('user',JSON.stringify(data.user));
+      this.router.navigate(['/home'])
+    })
   }
 
 }
