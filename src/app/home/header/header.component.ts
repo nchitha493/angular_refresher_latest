@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/service/service.service';
 import { Router } from '@angular/router';
 
@@ -7,11 +7,25 @@ import { Router } from '@angular/router';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
 
   users:any = localStorage.getItem("user");
+  text:any =""
   constructor(private userService: UserService,private router:Router) {
     this.users = JSON.parse(this.users);
+    
+
+  }
+  ngOnInit(): void {
+    console.log(this.userService.stringSubject)
+    this.userService.stringSubject.subscribe((data)=>{
+      console.log("data")
+      this.text= data
+    })
+   setTimeout( ()=>{
+    this.userService.getString()
+   },3000
+   )
   }
   logout(){
     this.userService.logout().subscribe((data:any)=>{

@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable,Subject } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-
+  public stringSubject = new Subject();
   constructor(private httpClient:HttpClient) { }
   register(register:any){
     return this.httpClient.post(`http://localhost:3000/users`,{name:register.name,email:register.email,age:register.age,password:register.password});
@@ -36,4 +37,13 @@ export class UserService {
     });
     return data;
   }
+  getString(){
+    console.log("ssssssssssssssssssssssssssssssssssssssssss")
+    this.stringSubject.next("Hello I am in header and home")
+  }
 }
+
+// Subject – No initial value or replay available
+// BehaviouralSubject – requires an initial value and emits current values to new subscribers
+// AsyncSubject – Emits latest values to subscribers on completion of the async task
+// ReplaySubject – replays a specified number of last values to new subscribers

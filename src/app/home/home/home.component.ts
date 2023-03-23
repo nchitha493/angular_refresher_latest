@@ -10,7 +10,7 @@ import * as am4core from "@amcharts/amcharts4/core";
 })
 export class HomeComponent implements OnInit {
   users:any = localStorage.getItem("user");
-  
+  text:any=""
   chartType: any = 'XYChart';
   public chart: any;
   categoryAxis : am4charts.CategoryAxis;
@@ -63,6 +63,10 @@ public changeSeriesTwoColor(color:string = "#ff0000"){
     this.columnSeriesTwo.columns.template.fill = am4core.color(color);
 }
   ngOnInit(): void {
+    this.userService.stringSubject.subscribe((data)=>{
+      console.log("data")
+      this.text= data
+    })
   }
   logout(){
     this.userService.logout().subscribe((data:any)=>{
