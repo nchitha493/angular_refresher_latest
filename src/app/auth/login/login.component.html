@@ -1,6 +1,6 @@
 <div id="wrapper" class="wrapper">
     <div class="container">
-        <h1>Welcome</h1>
+        <h1>Welcome {{subscriptionUsers}}</h1>
         <div id="error" class="error"></div>
         <form class="form" id="login" autocomplete="disabled" #userForm="ngForm" (submit)="submit()">
             <input type="email" #email="ngModel" [ngClass]="{'showError':email.touched && email.invalid}" name="username" [(ngModel)]="user.username" id="email" placeholder="Username" required>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -25,5 +25,15 @@ export class UserService {
 
   chart(){
     return this.httpClient.get(`http://localhost:3000/users/chart`,{});
+  }
+  
+  getUsersForSubscription()
+  {
+    let data = new Observable(observer => {
+          setTimeout(() => {
+            observer.next("Hello World");
+          }, 2000);
+    });
+    return data;
   }
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
  import { Router } from '@angular/router';
 import { UserService } from 'src/app/service/service.service';
 import {  switchMap,of } from 'rxjs';
@@ -9,15 +9,22 @@ import {  switchMap,of } from 'rxjs';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   user = {
     username: "",
     password: "",
     test:[{item:1},{item:2}]
   };
+  subscriptionUsers:any = "";
+  ngOnInit(){
+    this.userService.getUsersForSubscription().subscribe((data)=>{
+      this.subscriptionUsers =data
+    })
+  }
   constructor(private router:Router,private userService: UserService){
 
   }
+
   submit() {
     console.log(this.user)
     alert(`Submited with: ${this.user.username} ${this.user.password}`);
