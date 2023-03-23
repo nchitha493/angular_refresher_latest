@@ -4,24 +4,24 @@
      <div class="card">
        <h2 class="card-title text-center">Register </h2>
         <div class="card-body py-md-4">
-         <form _lpchecked="1">
+         <form [formGroup]="myForm" (submit)="signUp()">
             <div class="form-group">
-               <input type="text" class="form-control" id="name" placeholder="Name">
+               <input type="text" class="form-control" id="name" formControlName="name" placeholder="Name">
           </div>
           <div class="form-group">
-               <input type="email" class="form-control" id="email" placeholder="Email">
+               <input type="email" formControlName="email" class="form-control" id="email" placeholder="Email">
                               </div>
                               
                             
      <div class="form-group">
-       <input type="password" class="form-control" id="password" placeholder="Password">
+       <input type="password" class="form-control" formControlName="password" id="password" placeholder="Password">
      </div>
      <div class="form-group">
-        <input type="password" class="form-control" id="confirm-password" placeholder="confirm-password">
+        <input type="password" class="form-control" formControlName="confirmPassword" id="confirm-password" placeholder="confirm-password">
      </div>
      <div class="d-flex flex-row align-items-center justify-content-between">
         <a routerLink="/login">Login</a>
-                                  <button class="btn btn-primary">Create Account</button>
+                                  <button [disabled]="myForm.invalid" [ngStyle]="{'background-color':myForm.invalid && myForm.touched ? 'red' :'blue'}" type="submit" class="btn btn-primary">Create Account</button>
             </div>
          </form>
        </div>
