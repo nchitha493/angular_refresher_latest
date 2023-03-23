@@ -21,6 +21,7 @@ const routes: Routes = [
       
   }
 ];
+//Here are some types of Angular guards: CanActivate, CanActivateChild, CanLoad, CanDeactivate and Resolve
 
 @NgModule({
   declarations: [],
