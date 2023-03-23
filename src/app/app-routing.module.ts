@@ -2,8 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guard/auth.gaurd';
+import { HeaderComponent } from './home/header/header.component';
 
 const routes: Routes = [
+  
   {
     path: '',
     loadChildren: () =>
@@ -13,6 +15,7 @@ const routes: Routes = [
   },
   {
     path: 'home',
+    component: HeaderComponent,
     loadChildren: () =>
       import(`./home/home.module`).then(
         (m) => m.HomeModule
