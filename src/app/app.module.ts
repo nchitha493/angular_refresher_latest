@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { UserService } from './service/service.service';
+import { AuthGuard } from './guard/auth.gaurd';
 
 
 @NgModule({
@@ -18,7 +19,7 @@ import { UserService } from './service/service.service';
     RouterModule,
     HttpClientModule
   ],
-  providers: [UserService],
+  providers: [UserService,AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule  {
