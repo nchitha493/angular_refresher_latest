@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
  import { Router } from '@angular/router';
+import { UserService } from 'src/app/service/service.service';
 
 
 @Component({
@@ -13,13 +14,20 @@ export class LoginComponent {
     password: "",
     test:[{item:1},{item:2}]
   };
-  constructor(private route:Router){
+  constructor(private router:Router,private userService: UserService){
 
   }
   submit() {
     console.log(this.user)
     alert(`Submited with: ${this.user.username} ${this.user.password}`);
-    this.route.navigate(["home"])
+   
+    this.userService.login(this.user).subscribe((data:any)=>{
+      localStorage.setItem('token',data.token);
+        localStorage.setItem('user',JSON.stringify(data.user));
+        this.router.navigate(['/home'])
+    },(error)=>{
+      console.log("error",error);
+    });
   }
   addItem(){
     this.user.test.push({item:0})
