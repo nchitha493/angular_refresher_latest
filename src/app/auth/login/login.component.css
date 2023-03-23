@@ -214,3 +214,7 @@ form button:hover {
   margin-top:20px;
   font-size: .8em;
 }
+
+.showError{
+ border:1px solid red !important;
+}
