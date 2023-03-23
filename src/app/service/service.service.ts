@@ -12,7 +12,7 @@ export class UserService {
   }
 
   login(login:any){
-    return this.httpClient.post(`http://localhost:3000/login`,{email:login.email,password:login.password});
+    return this.httpClient.post(`http://localhost:3000/login`,{email:login.username,password:login.password});
   }
 
   logout(){
