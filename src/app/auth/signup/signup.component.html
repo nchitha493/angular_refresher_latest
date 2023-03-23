@@ -8,10 +8,19 @@
             <div class="form-group">
                <input type="text" class="form-control" id="name" formControlName="name" placeholder="Name">
           </div>
+          <div formArrayName="test">
+
+            <ng-container *ngFor="let test of test.controls; let i=index">
+               <input [formControlName]="i">
+               <button (click)="removeItem(i)">remove</button>
+            </ng-container>
+          </div>
+          <button (click)="addItem()">add</button>
+
           <div class="form-group">
                <input type="email" formControlName="email" class="form-control" id="email" placeholder="Email">
                               </div>
-                              
+              
                             
      <div class="form-group">
        <input type="password" class="form-control" formControlName="password" id="password" placeholder="Password">
