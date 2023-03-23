@@ -11,7 +11,7 @@ import { ColorPipe } from '../color.pipe';
   declarations: [
     HomeComponent,
     HighlightDirective,
-    ColorPipe
+    ColorPipe,
     
   ],
   imports: [

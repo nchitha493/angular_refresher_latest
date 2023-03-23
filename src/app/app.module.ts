@@ -9,12 +9,14 @@ import { UserService } from './service/service.service';
 import { AuthGuard } from './guard/auth.gaurd';
 import { JwtInterceptor } from './jwtinterceptor';
 import { HeaderComponent } from './home/header/header.component';
+import { FooterComponent } from './home/footer/footer.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,5 @@
 <a class="logout btn btn-primary pull-right" (click)="logout()">Logout</a>
 <a class="logout btn btn-secondary pull-right" (click)="logoutAll()">logout All</a>
-{{text}}
+{{text}} {{outputs}}
 <router-outlet></router-outlet>
+<app-footer [inp]="'Footer Content'" (out)="output($event)"></app-footer>

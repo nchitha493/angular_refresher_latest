@@ -10,11 +10,15 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
 
   users:any = localStorage.getItem("user");
-  text:any =""
+  text:any ="";
+  outputs:any="";
   constructor(private userService: UserService,private router:Router) {
     this.users = JSON.parse(this.users);
     
 
+  }
+  output(value:any){
+    this.outputs =value
   }
   ngOnInit(): void {
     console.log(this.userService.stringSubject)
