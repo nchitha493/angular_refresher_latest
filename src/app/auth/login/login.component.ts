@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
  import { Router } from '@angular/router';
 import { UserService } from 'src/app/service/service.service';
+import {  switchMap,of } from 'rxjs';
 
 
 @Component({
@@ -21,7 +22,9 @@ export class LoginComponent {
     console.log(this.user)
     alert(`Submited with: ${this.user.username} ${this.user.password}`);
    
-    this.userService.login(this.user).subscribe((data:any)=>{
+    this.userService.login(this.user).pipe(switchMap((x:any)=>{
+        return of(x)
+    })).subscribe((data:any)=>{
       localStorage.setItem('token',data.token);
         localStorage.setItem('user',JSON.stringify(data.user));
         this.router.navigate(['/home'])
