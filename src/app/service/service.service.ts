@@ -44,6 +44,6 @@ export class UserService {
 }
 
 // Subject – No initial value or replay available
-// BehaviouralSubject – requires an initial value and emits current values to new subscribers
-// AsyncSubject – Emits latest values to subscribers on completion of the async task
+// BehaviouralSubject – requires an initial value and emits current values to new subscribers .A BehaviorSubject holds one value. When it is subscribed it emits the value immediately. A Subject doesn't hold a value.
+// AsyncSubject – Emits latest values to subscribers on completion of the async task //    this.subject.complete();
 // ReplaySubject – replays a specified number of last values to new subscribers
