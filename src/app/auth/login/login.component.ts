@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+ import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-login',
@@ -11,9 +13,13 @@ export class LoginComponent {
     password: "",
     test:[{item:1},{item:2}]
   };
+  constructor(private route:Router){
+
+  }
   submit() {
     console.log(this.user)
     alert(`Submited with: ${this.user.username} ${this.user.password}`);
+    this.route.navigate(["home"])
   }
   addItem(){
     this.user.test.push({item:0})
