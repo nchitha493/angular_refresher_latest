@@ -8,7 +8,7 @@ import { Component,EventEmitter,Input, OnInit, Output } from '@angular/core';
 export class FooterComponent implements OnInit {
   @Input() inp:any;
   @Output() out:any = new EventEmitter();
-  ngOnInit(){
+  ngOnInit(){  
     this.out.emit(this.inp)
   }
 
